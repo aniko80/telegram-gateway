@@ -9,7 +9,6 @@ services:
       - ./session:/app/session
     depends_on:
       - redis
-      - n8n
 
   redis:
     image: redis:7
