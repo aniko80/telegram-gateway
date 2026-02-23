@@ -1,8 +1,11 @@
 import os
-from pathlib import Path
+from dotenv import load_dotenv
 
-SESSION_DIR = Path("session")
-SESSION_DIR.mkdir(exist_ok=True)
+load_dotenv()
+
+TG_API_ID = int(os.getenv("TG_API_ID"))
+TG_API_HASH = os.getenv("TG_API_HASH")
+TG_SESSION_STRING = os.getenv("TG_SESSION_STRING")
 
 REDIS_HOST = os.getenv("REDIS_HOST", "redis")
 REDIS_PORT = int(os.getenv("REDIS_PORT", 6379))

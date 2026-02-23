@@ -1,14 +1,13 @@
 import asyncio
-from pyrogram import idle
-from app.bot import app
-from app.worker import worker
+from app.telegram_client import client
+from app.redis_queue import worker
 
 
 async def main():
-    await app.start()
+    await client.start()
     asyncio.create_task(worker())
-    await idle()
-    await app.stop()
+    print("Gateway started")
+    await client.run_until_disconnected()
 
 
 if __name__ == "__main__":
